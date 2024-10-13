@@ -3,8 +3,16 @@
 
 int main()
 {
-    // Set the locale to support wide characters
-    std::locale::global(std::locale(""));
+    try
+    {
+        // Set the locale to a more basic one
+        std::locale::global(std::locale("C")); // or "en_US" or "English"
+    }
+    catch (const std::exception &e)
+    {
+        std::wcerr << L"Locale setting failed: " << e.what() << std::endl;
+        return 1; // Exit with error code
+    }
 
     // Using wcout to display a message
     std::wcout << L"Enter a wide character: ";
@@ -16,18 +24,12 @@ int main()
     // Using wcout to display the wide character
     std::wcout << L"You entered: " << wch << std::endl;
 
-    // Simulating an error using wcerr
-    if (wch < 0)
-    {
-        std::wcerr << L"Error: Invalid wide character entered!" << std::endl;
-    }
-    else
-    {
-        std::wclog << L"Logging: Valid wide character." << std::endl;
-    }
+    // Logging the valid input
+    std::wclog << L"Logging: Valid wide character." << std::endl;
 
     return 0;
 }
+
 // wcin  -	Standard input stream (wide) (object)
 // wcout -	Standard output stream (wide) (object)
 // wcerr -	Standard output stream for errors (wide-oriented) (object)
