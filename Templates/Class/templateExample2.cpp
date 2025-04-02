@@ -28,7 +28,7 @@ public:
 //   }
 // };
 template <>
-void Szablon<double, float>::display() { cout << " spec double float " << endl; }; // zapis skrócony specjalizowanego szablonu double,float
+void Szablon<double, float>::display() { cout << "spec double float " << endl; }; // zapis skrócony specjalizowanego szablonu double,float
 // który powyżej występuje w pełnej wersji.
 template <>
 class
@@ -39,7 +39,7 @@ public:
     float m2;
     void display()
     {
-        cout << " spec int float " << endl;
+        cout << "spec int float " << endl;
     }
 };
 int main()
